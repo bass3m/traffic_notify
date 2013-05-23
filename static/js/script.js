@@ -1,0 +1,1 @@
+/Users/bassem/Dev/django/projects/traffic/static/js/script.js
