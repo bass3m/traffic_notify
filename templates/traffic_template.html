@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block extra_css %}
+{{ block.super }}
+<link rel="stylesheet" href="{{ STATIC_URL }}css/jquery-ui-1.9.1.custom.css">
+<link rel="stylesheet" href="{{ STATIC_URL }}css/leaflet.css">
+{% endblock extra_css %}
+{% block extra_js %}
+{{ block.super }}
+<script src="{{ STATIC_URL }}js/jquery-1.8.3.min.js"></script>
+<!--<script src="http://code.jquery.com/jquery-1.8.3.js"></script>-->
+<script src="{{ STATIC_URL }}js/jquery-ui-1.9.1.custom.js"></script>
+<script src="{{ STATIC_URL }}js/spin.min.js"></script>
+<script src="{{ STATIC_URL }}js/script.js"></script>
+{% endblock extra_js %}
+{% block map %}
+<div id="map">
+    <script src="{{ STATIC_URL }}js/leaflet.js"></script>
+</div>
+{% endblock map %}
+{% block subscriptions %}
+<div class="subscriptions">
+    {% for sub in subscription_list %}
+    <div class="sub">
+        <img src="{{ STATIC_URL }}img/US_395_(CA).svg" width="30px" height="30px" style="vertical-align:middle;">
+        <span></span> 
+        <a href="#" class="button delete">Remove</a>
+    </div>
+    {% endfor %}
+</div>
+{% endblock subscriptions %}
+{% block subscribe %}
+<form name="form_subscriptions" id="form_subscriptions">
+    <input type="email" placeholder="Email address" id="subscriber_email" name="subscriber_email" required="required">
+    <input type="time" id="email_delivery_time" name="email_delivery_time" required="required" value="08:00">
+    <input type="submit" value="Subscribe" name="submit_form" id="submit_form">
+</form>
+{% endblock subscribe %}
+{% block loading %}
+<div class="loading">
+</div>
+{% endblock loading %}

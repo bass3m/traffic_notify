@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="keywords" content="{% block meta_keywords %}{% endblock %}">
+<meta name="description" content="{% block meta_description %}{% endblock %}">
+<title>{% block meta_title %}{% endblock %}{% if settings.SITE_TITLE %} | {{ settings.SITE_TITLE }}{% endif %}</title>
+<link rel="shortcut icon" href="{{ STATIC_URL }}img/favicon.ico">
+{% load compress %}
+{% compress css %}
+<link rel="stylesheet" href="{{ STATIC_URL }}css/style.css">
+{% block extra_css %}{% endblock %}
+{% endcompress %}
+</head>
+<body>
+    <header>
+    <nav>
+    <div class="site_nav" id="site_nav">
+        <ul>
+            <li><a href="{{ STATIC_URL }}html/about.html">about</a></li>
+            <li><a href="{{ STATIC_URL }}html/rides.html">rides</a></li>
+            <li><a href="{{ STATIC_URL }}html/projects.html">projects</a></li>
+            <li><a href="{{ STATIC_URL }}html/news.html">news</a></li>
+            <li><a href="{{ STATIC_URL }}html/personal.html">personal</a></li>
+        </ul>
+    </div>
+    </nav>
+    </header>
+{% block content %}
+<div class="content">
+{% compress js %}
+{% block extra_js %}{% endblock %}
+{% endcompress %}
+{% block map %} {% endblock %}
+{% block subscriptions %} {% endblock %}
+{% block subscribe %} {% endblock %}
+{% block loading %} {% endblock %} 
+</div>
+{% endblock content %}
+</body>
+</html>
